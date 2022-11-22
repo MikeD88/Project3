@@ -48,6 +48,3 @@ module.exports = {
   }
 
 };
-
-// this is made by teena
-//please let me commit please
