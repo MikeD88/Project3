@@ -16,5 +16,25 @@ exports.seed = async function (knex) {
       training: 2,
       completion_date: '2017-01-30',
     },
+    {
+      member: 1,
+      training: 3,
+      completion_date: '2017-01-30',
+    },
+    {
+      member: 2,
+      training: 4,
+      completion_date: '2017-01-30',
+    },
+    {
+      member: 1,
+      training: 4,
+      completion_date: '2017-01-30',
+    },
+    {
+      member: 2,
+      training: 3,
+      completion_date: '2017-01-30',
+    },
   ]);
 };

@@ -11,11 +11,20 @@ exports.seed = async function (knex) {
       name: 'CYBER SECURITY',
       frequency: 1
     },
-
     {
       id: 2,
       name: 'DONT BE RACIST 101',
       frequency: 1
+    },
+    {
+      id: 3,
+      name: 'Cyber Awareness',
+      frequency: 1
+    },
+    {
+      id: 4,
+      name: 'Religious Freedom',
+      frequency: 2
     }
   ]);
 };
