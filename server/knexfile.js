@@ -1,3 +1,4 @@
+// Update with your config settings.
 
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
@@ -5,13 +6,10 @@
 module.exports = {
 
   development: {
-    client: 'postgres',
-    connection: {
-      host: '127.0.0.1',
-      password: 'docker',
-      user: 'postgres',
-      port: 5432,
-      database: 'workshop'
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
+    migrations: {
+      tableName: 'tr_migrations'
     }
   },
 
