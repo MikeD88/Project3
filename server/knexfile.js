@@ -1,5 +1,3 @@
-// Update with your config settings.
-
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
@@ -7,7 +5,12 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: {
+      database: 'trng_records',
+      password: 'postgrespw',
+      user: 'postgres',
+      port: 49153,
+    },
     migrations: {
       tableName: 'tr_migrations'
     }
