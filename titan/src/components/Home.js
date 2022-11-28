@@ -35,7 +35,7 @@ const Home = () => {
           </Dropdown.Menu>
         </Dropdown>
       </Form>
-      <Table striped bordered hover>
+      <Table variant="dark" size="lg" striped bordered hover>
         <thead>
           <tr>
             <th>Rank</th>

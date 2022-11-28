@@ -1,4 +1,3 @@
-import space from "./Space.mp4";
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -7,21 +6,7 @@ import Home from "./components/Home";
 
 function App() {
   return (
-    <div className="App"
-    style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100vh',
-    }} 
-    >
-      <video
-        src={space}
-        autoPlay={"autoplay"}
-        loop
-        id="video"
-        type="video/mp4"
-      />
+    <div className="App">
       <Router>
         <Routes>
           <Route path="/" element={<Landing />} />
