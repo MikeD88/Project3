@@ -21,7 +21,13 @@ const Landing = () => {
         type="video/mp4"
       />
       <Link to="/home">
-        <button className="btn btn-dark btn-lg">Get Started</button>
+        <div>
+          T
+        </div>
+
+        <button className="btn btn-dark btn-lg">
+          Enter Site
+        </button>
       </Link>
     </div>
   );

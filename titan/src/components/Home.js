@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navigation from "./Navigation";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import Table from "react-bootstrap/Table";
+import getData from "../rest/getData.js";
 
 const Home = () => {
+  useEffect(() => {
+    const fetchSomething = async () => {
+      getData();
+    }
+    fetchSomething();
+  }, []);
   return (
     <>
       <Navigation />
@@ -46,26 +53,14 @@ const Home = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Amn</td>
-            <td>Smith</td>
-            <td>John</td>
-            <td>123 TRS</td>
-            <td>S3OA</td>
-          </tr>
-          <tr>
-            <td>A1C</td>
-            <td>Smith</td>
-            <td>Jane</td>
-            <td>123 TRS</td>
-            <td>S3OB</td>
-          </tr>
-          <tr>
-            <td>SrA</td>
-            <td>Dover</td>
-            <td>Benjamin</td>
-            <td>420 MXS</td>
-            <td>M1OAX</td>
+          <tr className='member-row'>
+            {/* <td className='rank'>{members.map((member, id) => {
+              
+            })}</td> */}
+            <td className='last-name'>Smith</td>
+            <td className='first-name'>John</td>
+            <td className='unit'>123 TRS</td>
+            <td className='office-symbol'>S3OA</td>
           </tr>
         </tbody>
       </Table>
