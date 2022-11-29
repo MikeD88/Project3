@@ -2,11 +2,10 @@ const express = require('express');
 const app = express();
 const port = 8081;
 const knex = require('knex')(require('../knexfile.js')["development"])
+const cors = require('cors')
 
-const fs = require('fs');
-
+app.use(cors())
 app.use(express.json());
-
 app.get('/', (req, res) => {
   res.send('This is not the endpoint you are looking for.');
 })
