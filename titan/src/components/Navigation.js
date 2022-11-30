@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Outlet } from "react-router-dom";
+import MemberContext from './MemberContext.js';
+import { createSearchParams, useNavigate } from "react-router-dom";
 
 function Navigation() {
 
-  const handleSubmit = () => {
+  const [membersList, searchTerm, setSearchTerm] = useContext(MemberContext)
+  const nav = useNavigate();
+  const params = { search: 'name' }
 
+  const handleSubmit = (e) => {
+    params.search = e.target[0].value
+    nav({
+      pathname: '/home',
+      search: `?${createSearchParams(params)}`,
+    })
+    e.preventDefault();
   }
 
   return (
@@ -36,36 +45,15 @@ function Navigation() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <NavDropdown title="Member Actions" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Add Member</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Edit Member
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Delete Member
-                </NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Certification Actions" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">
-                  Add Certification
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Edit Certification
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Delete Certification
-                </NavDropdown.Item>
-              </NavDropdown>
+              <Nav.Link href="/add_member">Add Member</Nav.Link>
+              <Nav.Link href="/add_certification">Add Certification/Training</Nav.Link>
             </Nav>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search Member"
-                className="me-2"
-                aria-label="Search Member"
-                onSubmit={handleSubmit}
-              />
-              <Button variant="outline-secondary">Search</Button>
+            <Form className="d-flex" onSubmit={handleSubmit}>
+              <Form.Group className="d-flex" controlId="formSearch">
+                <Form.Label>Search</Form.Label>
+                <Form.Control type="search" placeholder="Search" />
+              </Form.Group>
+              <Button variant="outline-secondary" type="submit">Search</Button>
             </Form>
           </Navbar.Collapse>
         </Container>

@@ -19,6 +19,7 @@ const Landing = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
+          flexDirection: "column"
         }}
       >
         <video
@@ -34,8 +35,8 @@ const Landing = () => {
             <h1 className="text">ENTER TITAN</h1>
           </button>
         </Link>
+        <footer className="text2">Created by Active Duty Military for Active Duty Military to track training & certification currency</footer>
       </div>
-      <h2 className="text2">Created by Active Duty Military for Active Duty Military to track training & certification currency</h2>
       <Outlet />
     </div>
   );
