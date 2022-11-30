@@ -178,8 +178,9 @@ app.delete('/multiple-delete', async (req, res) => {
     });
 });
 
-app.delete('/members/:id', (req, res) => {
+app.delete('/members/:id', async (req, res) => {
   let { id } = req.params;
+  // const id = req.body.id;
   knex('members')
     .where('id', id)
     .del()

@@ -9,7 +9,7 @@ module.exports = {
       database: 'trng_records',
       password: 'postgrespw',
       user: 'postgres',
-      port: 49156,
+      port: 49153,
     },
     migrations: {
       tableName: 'tr_migrations'

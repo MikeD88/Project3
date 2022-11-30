@@ -6,7 +6,7 @@ exports.up = function (knex) {
   return knex.schema
     .createTable('members', function (table) {
       table.increments('id');
-      table.string('rank')
+      table.string('rank');
       table.string('l_name');
       table.string('f_name');
       table.string('email_addr');
