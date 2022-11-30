@@ -2,11 +2,10 @@ const express = require('express');
 const app = express();
 const port = 8081;
 const knex = require('knex')(require('../knexfile.js')["development"])
+const cors = require('cors')
 
-const fs = require('fs');
-
+app.use(cors())
 app.use(express.json());
-
 app.get('/', (req, res) => {
   res.send('This is not the endpoint you are looking for.');
 })
@@ -100,6 +99,25 @@ app.post('/members', async (req, res) => {
     })
 });
 
+app.post('/multiple-add', async (req, res) => {
+  const dataArray = req.body;
+
+  const maxIdQuery = await knex('members').max('id as maxId').first();
+  let num = Number.parseInt(maxIdQuery.maxId + 1);
+  dataArray.map((obj) => {
+    obj['id'] = num;
+    num++;
+  })
+  console.log(dataArray);
+  knex('members')
+    .insert(
+      dataArray
+    )
+    .then(function (result) {
+      res.status(201).send(result);
+    });
+});
+
 app.post('/trainings', async (req, res) => {
   const maxIdQuery = await knex('trainings').max('id as maxId').first();
   let num = maxIdQuery.maxId + 1;
@@ -147,6 +165,17 @@ app.patch('/trainings/:id', (req, res) => {
       trainings === 0 ? res.status(200).send(`Entry ${id} doesn't exist, so nothing was updated`)
         : res.status(201).send(`Training File ${id} is updated`)
     })
+});
+
+app.delete('/multiple-delete', async (req, res) => {
+  const dataArray = req.body;
+  knex('members')
+    .whereIn('id', dataArray)
+    .del()
+    .then(members => {
+      members === 0 ? res.status(200).send(`Error: Nothing Was Deleted`)
+        : res.status(201).send(`All Members were deleted`)
+    });
 });
 
 app.delete('/members/:id', (req, res) => {

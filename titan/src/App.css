@@ -1,8 +1,7 @@
 .App {
   text-align: center;
-}
-#video {
-position: fixed;
-z-index: -1;
-width: 100%;
+  display: 'flex';
+  justify-Content: 'center';
+  align-Items: 'center';
+  height: '100vh';
 }

@@ -27,5 +27,15 @@ exports.seed = async function (knex) {
       office_symbol: 'DOA',
       job_code: '51471'
     },
+    {
+      id: 3,
+      rank: 'SMSgt',
+      l_name: 'Thomas',
+      f_name: 'Billy',
+      email_addr: 'asdfasdf@email.com',
+      unit: '782nd ISRS',
+      office_symbol: 'DOB',
+      job_code: '50471'
+    },
   ]);
 };
