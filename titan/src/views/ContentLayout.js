@@ -1,11 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router';
-import Navigation from '../components/Navigation';
+import Navbar from '../components/Navbar';
 
 const ContentLayout = () => {
   return (
     <>
-      <Navigation />
+      <Navbar />
       <Outlet />
     </>
   );

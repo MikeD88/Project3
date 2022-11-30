@@ -1,15 +1,16 @@
 #video {
   position: fixed;
-  z-index: -1;
   width: 100%;
   min-height: 100%;
   min-width: 100%;
   width: 100%;
   height: auto;
   object-fit: fill;
+  background: transparent !important;
 }
 
 #button {
+  z-index: 1;
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
@@ -26,7 +27,7 @@
   background: linear-gradient(to right, rgb(126, 207, 175), rgb(198, 198, 138));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: sans-serif;
+  font-family: 'Oxygen';
   font-size: 45px;
 }
 
@@ -35,8 +36,13 @@
   background: linear-gradient(to right, rgb(126, 207, 175), rgb(198, 198, 138));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: sans-serif;
+  font-family: 'Oxygen';
   font-size: 15px;
   position: absolute;
   bottom: 10px;
+}
+
+#member-name {
+  font-family: 'Oxygen';
+  color: #1f2024;
 }

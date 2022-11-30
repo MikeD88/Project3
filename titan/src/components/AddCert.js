@@ -1,8 +1,5 @@
-import "./AddMember.css";
-import React, { useEffect, useState, useContext } from "react";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-
+import React, { useState } from "react";
+import FormGridCert from "./FormGridCert";
 
 const AddCert = () => {
 
@@ -11,16 +8,21 @@ const AddCert = () => {
   const [message, setMessage] = useState("");
 
   let addSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     try {
+      const body = {
+        name: e.target[0].value,
+        frequency: e.target[1].value,
+      }
+      console.log("body", body)
       let res = await fetch("http://localhost:8081/trainings", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          name: name,
-          frequency: frequency,
+          name: e.target[0].value,
+          frequency: e.target[1].value,
         }),
       });
       let resJson = await res.json();
@@ -37,20 +39,10 @@ const AddCert = () => {
   };
 
   return (
-    <Form onSubmit={addSubmit}>
-      <Form.Group className="mb-5 mt-5" controlId="formBasicName" onChange={(e) => setName(e.target.value)}>
-        <Form.Label>Name</Form.Label>
-        <Form.Control type="title" placeholder="Enter Certification/Training Name" />
-      </Form.Group>
-      <Form.Group className="mb-5" controlId="formBasicFrequency" onChange={(e) => setFrequency(e.target.value)}>
-        <Form.Label>Frequency</Form.Label>
-        <Form.Control type="frequency" placeholder="Enter Certification/Training Frequency (In Years)" />
-      </Form.Group>
-      <Button variant="secondary" type="submit">
-        Submit
-      </Button>
+    <>
+      <FormGridCert onSubmit={addSubmit} />
       <div className="message">{message ? <p>{message}</p> : null}</div>
-    </Form>
+    </>
   );
 }
 
